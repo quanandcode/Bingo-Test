@@ -168,9 +168,9 @@ for row in range(5):
         num = nums[row][col]
         num.place(x=x, y=y)
 #music
-def play():
-    playsound("./music/1.mp3")
+
 # play()
 #call timecoutdown
 down()
+playsound("./music/1.mp3", False)
 window.mainloop()
