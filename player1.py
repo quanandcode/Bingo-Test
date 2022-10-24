@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 import random
 from get_value import *
 import time
+from playsound import playsound
 # from get_value import value
 window = Tk()
 window.geometry("1000x625")
@@ -42,7 +43,6 @@ timer = Label(window, image=timer_img, compound=CENTER, font=("Comic Sans MS", 4
 timer.place(x=25, y=25+(100+25))
 #time coutdowwn
 giay = 5 * 60 
-my_turn = True
 def down():
     global giay 
     global my_turn
@@ -52,13 +52,8 @@ def down():
         messagebox.showinfo("Time Countdown", "Time's up ")
         return 0
     giay -= 1
-    if(giay == 296):
-        my_turn == False
     if(my_turn == True):
         timer.after(1000,down)
-        
-
-
 ###########################################################################
 
 # CREATE Score
@@ -172,6 +167,10 @@ for row in range(5):
         x, y = nums_locate[row][col]
         num = nums[row][col]
         num.place(x=x, y=y)
+#music
+def play():
+    playsound("./music/1.mp3")
+# play()
 #call timecoutdown
 down()
 window.mainloop()

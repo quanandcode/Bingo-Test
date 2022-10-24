@@ -4,6 +4,7 @@ from PIL import ImageTk, Image
 # light: #fbf3f2
 # blue: #1c768f
 # dark: #032539
+my_turn = True
 value =0
 def bind_all(nums):
     #00
