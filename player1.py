@@ -5,6 +5,7 @@ import random
 from get_value import *
 import time
 from playsound import playsound
+from kiem_tra_bingo import *
 # from get_value import value
 window = Tk()
 window.geometry("1000x625")
@@ -45,10 +46,22 @@ timer.place(x=25, y=25+(100+25))
 giay = 5 * 60
 my_turn = True
 value = 0
-
+def down():
+    global giay
+    global my_turn
+    mins, secs = divmod(giay, 60)
+    timer.config(text=str(mins) + ":" +
+                 str(int(secs/10)) + str(int(secs % 10)))
+    giay -= 1
+    if (giay == 0):
+        messagebox.showinfo("Time Countdown", "Time's up ")
+        return 0    
+    if (my_turn == True):
+        timer.after(1000, down)
+###########################################################################
 
 def bind_all(nums):
-    def value00(event):
+    def value00(event): 
         value = nums[0][0]['text']
         print(value)
         nums[0][0]['fg'] = "#123"
@@ -323,21 +336,6 @@ def bind_all(nums):
     nums[4][4].bind("<Button-1>", value44)
 
 
-def down():
-    global giay
-    global my_turn
-    mins, secs = divmod(giay, 60)
-    timer.config(text=str(mins) + ":" +
-                 str(int(secs/10)) + str(int(secs % 10)))
-    giay -= 1
-    if (giay == 0):
-        messagebox.showinfo("Time Countdown", "Time's up ")
-        return 0
-    print(my_turn)
-    if (my_turn == True):
-        timer.after(1000, down)
-###########################################################################
-
 # CREATE Score
 
 
@@ -468,6 +466,7 @@ anime = Label(window, image=anime_img)
 # CALL anime
 anime.place(x=25+ 200 +25 + 500 + 25, y=25 + 200 + 25)
 ##############################################################
+#Call test function
 # music
 # call timecoutdown
 down()
